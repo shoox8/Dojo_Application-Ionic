@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Camarinha
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 3</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <img src="{{imgURL}}" height="200" width="200"/>
+    <ion-button (click)="getCamera()">Camara</ion-button>
+    <ion-button (click)="getGallery()">Gallery</ion-button>
+  </div>
+ 
+  <app-explore-container name="Tab 3 page"></app-explore-container>
+</ion-content>

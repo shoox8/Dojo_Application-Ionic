@@ -1,5 +1,7 @@
 {
-  "name": "Charlie-DojoApp",
-  "integrations": {},
-  "type": "ionic-angular"
+  "name": "App",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
 }
