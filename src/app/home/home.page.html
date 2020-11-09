@@ -17,6 +17,7 @@
   </ion-row>
   <!---------------------------------->
 
+  <!--
 <ion-col style="top: 20px">
   <ion-card>
     <ion-card-header>
@@ -25,8 +26,8 @@
     </ion-card-header>
 
     <ion-card-content>
-        <ion-progress-bar color="primary" value="0.7"></ion-progress-bar>
-        <!--
+        
+        
         <ion-item>
           <ion-label>Clases Asistidas</ion-label>
           <ion-badge slot="end">22</ion-badge>
@@ -35,17 +36,46 @@
           <ion-label>Clases Restantes</ion-label>
           <ion-badge slot="end">22</ion-badge>
         </ion-item>
-        -->
+        
     </ion-card-content>
   </ion-card>
-</ion-col>
+</ion-col> -->
   
+  <ion-row>
+  
+  <ion-col style="top: 50px; left: 20px">
+    <div class="cuadrado">
+    </div>
+  </ion-col>
+  <ion-col>
+      <ion-progress-bar color="primary" value="0.7" class="pbar"></ion-progress-bar>
+  </ion-col>
+  
+  </ion-row>
+
   <!--Proximas Clases-->
   <ion-row >
-    <ion-col style="top: 70px">
-    <h3>Próximas Clases</h3>
-  </ion-col>
+    <ion-col style="top: 180px; left: 8px">
+    <h3>Clases esta semana</h3>
+    <div class="bar">
+      <span class="bar__hour">09:00</span>
+      <div class="bar__hour__flex">
+        <span class="bar__hour__small">Nombre del Profesor</span>
+        <span class="bar__hour__text">Materia de la Clase</span>
+      </div>
+    </div>
+    <br>
+    <div class="bar">
+      <span class="bar__hour2">11:00</span>
+      <div class="bar__hour__flex">
+        <span class="bar__hour__small">Nombre del Profesor</span>
+        <span class="bar__hour__text">Materia de la Clase</span>
+      </div>
+    </div>
+    </ion-col>
   </ion-row>
+
+  
 
 
 </ion-content>

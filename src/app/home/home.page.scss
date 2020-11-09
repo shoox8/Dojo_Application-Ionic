@@ -1,0 +1,85 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+  .bar{
+display:flex;
+}
+
+main{
+margin:25px;
+}
+
+*{
+font-family: 'Varela Round', sans-serif;
+}
+
+.bar__hour{
+color: #eaebf0;
+font-weight:500;
+display: flex;
+align-items: center;
+font-size: 23px;
+}
+
+.bar__hour::after{
+content: "";
+display: inline-block;
+width: 6px;
+margin-right: 15px;
+height: 55px;
+background: #ff9e80;
+border-radius: 5px;
+margin-left: 15px;
+}
+
+.bar__hour2{
+color: #ecedf3;
+font-weight:500;
+display: flex;
+align-items: center;
+font-size: 23px;
+}
+
+.bar__hour2::after{
+content: "";
+display: inline-block;
+width: 6px;
+margin-right: 15px;
+height: 55px;
+background: #435ef5;
+border-radius: 5px;
+margin-left: 15px;
+}
+
+.bar__hour__flex{
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.bar__hour__small{
+color:#C6C6D0;
+font-size: 12px;
+padding: 2px;
+}
+
+.bar__hour__text{
+color: #59595a;
+padding:2px;
+}
+
+
+.cuadrado {
+    width: 50px; 
+    height: 50px; 
+    background: #b0b0c2;
+    border-radius: 20%;
+}
+
+.pbar {
+    width: 200px;
+    height: 6px;
+    top: 83px;
+    border-radius: 25px;
+    right: 30px;
+    animation: prog 2s linear;
+}
