@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Tab2Page } from './tab2.page';
+import { Tab2Page } from './nfc.page';
 
 const routes: Routes = [
   {
