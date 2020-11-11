@@ -12,11 +12,13 @@ const routes: Routes = [
         loadChildren: () => import('../home/home.module').then(m => m.Tab1PageModule)
       },
       {
+
         path: 'tab2',
         loadChildren: () => import('../nfc/nfc.module').then(m => m.Tab2PageModule)
       },
       {
-        path: 'tab3',
+
+       path: 'tab3',
         loadChildren: () => import('../reto/reto.module').then(m => m.Tab3PageModule)
       },
       {
