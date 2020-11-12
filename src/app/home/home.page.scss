@@ -76,10 +76,19 @@ padding:2px;
 }
 
 .pbar {
-    width: 200px;
-    height: 6px;
-    top: 90px;
-    border-radius: 25px;
-    right: 30px;
+    height: 10px;
+    border-radius: 40px;
     animation: prog 2s linear;
+}
+
+.cinturon_actual{
+  margin-top: 50px;
+  margin-left: 16px;
+  border-radius: 10px;
+  img{
+    height: 50px;
+    width: 50px;
+    margin-left: 13px;
+    margin-top: 10px;
+  }
 }
