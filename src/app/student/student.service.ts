@@ -2,21 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    Authorization: 'my-auth-token'
-  })
-};
-
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
   apiUrl = 'https://apirestcharliev1.herokuapp.com/';
+  token: string = '';
+  httpOptions = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = currentUser.token;
+
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Token ' + this.token
+      })
+    };
+  }
 
   login(credentials): Observable<any> {
     return this.http.post(this.apiUrl+'login/', credentials);
@@ -27,11 +32,11 @@ export class StudentService {
   }
 
   getByUsername(username): Observable<any> {
-    return this.http.get(this.apiUrl+'api/users/'+username);
+    return this.http.get(this.apiUrl+'api/users/'+username, this.httpOptions);
   }
 
   update(id, data): Observable<any> {
-    return this.http.put(this.apiUrl+'api/users/'+id, data);
+    return this.http.put(this.apiUrl+'api/users/'+id, data, this.httpOptions);
   }
 
 }

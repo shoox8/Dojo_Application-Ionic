@@ -1,5 +1,8 @@
 <ion-content [fullscreen]="true">
 
+  <!-- {{token}} -->
+  <!-- {{username}} -->
+
   <!--Avatar nombre e info------------->
   <ion-row size="1" size-md>
     <ion-col style="top: 45px; left:40px">
@@ -8,7 +11,7 @@
       </ion-avatar>
     </ion-col>
     <ion-col size="7" style="top: 30px; right: 10px">
-      <h5>Nombre y Apellidos</h5>
+      <h5>{{student.first_name}} {{student.last_name}}</h5>
       <ion-chip>
         <ion-icon name="egg-outline"></ion-icon>
         <ion-label>Principiante</ion-label>

@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
     this.studentService.login(credentials)
       .subscribe(
         data => {
-          this.token = data;
+          localStorage.setItem('currentUser', JSON.stringify({ token: data.token, username: credentials.username}));
           // console.log(data);
           this.router.navigate(['/tabs/tab1']);
         },
