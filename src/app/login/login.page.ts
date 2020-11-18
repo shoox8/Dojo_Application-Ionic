@@ -36,11 +36,11 @@ export class LoginPage implements OnInit {
       .subscribe(
         data => {
           this.token = data;
-          console.log(data);
+          // console.log(data);
           this.router.navigate(['']);
         },
         error => {
-          console.log(error);
+          // console.log(error);
           this.loginFailed = true;
           this.username = null;
           this.password = null;
