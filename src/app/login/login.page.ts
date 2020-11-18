@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
         data => {
           this.token = data;
           // console.log(data);
-          this.router.navigate(['']);
+          this.router.navigate(['/tabs/tab1']);
         },
         error => {
           // console.log(error);
