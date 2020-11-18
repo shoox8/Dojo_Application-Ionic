@@ -13,7 +13,10 @@ import { StudentService } from '../student/student.service';
 export class LoginPage implements OnInit {
 
   student : Student = null;
+  username : any = null;
+  password : any = null;
   token : any = null;
+  loginFailed: boolean = false;
 
   constructor(
     private studentService: StudentService,
@@ -23,10 +26,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login(username, password): void {
+  login(): void {
     const credentials = {
-      username: username,
-      password: password,
+      username: this.username,
+      password: this.password,
     };
 
     this.studentService.login(credentials)
@@ -38,6 +41,9 @@ export class LoginPage implements OnInit {
         },
         error => {
           console.log(error);
+          this.loginFailed = true;
+          this.username = null;
+          this.password = null;
         }
       );
   }

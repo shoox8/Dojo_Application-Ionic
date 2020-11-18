@@ -15,14 +15,24 @@
   </div>
 
   <form id="form">
+    <ng-template [ngIf]=loginFailed>
+      <ion-item lines="full" color="danger">
+        <ion-label>
+          Username o password incorrectos
+        </ion-label>
+      </ion-item>
+    </ng-template>
+
     <ion-item lines="full">
       <ion-label position="floating">Username</ion-label>
-      <ion-input type="text" #username required></ion-input>
+      <ion-input type="text" [(ngModel)]="username" name="user" required></ion-input>
     </ion-item>
-    <ion-item lines="full">
+
+    <ion-item lines="full" [color]="blue">
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" #password required></ion-input>
+      <ion-input [(ngModel)]="password" name="pass" type="password" required></ion-input>
     </ion-item>
-    <ion-button expand="block" shape="round" (click)="login(username.value, password.value)">Login</ion-button>
+    <ion-button expand="block" shape="round" (click)="login()">Login</ion-button>
   </form>
-</ion-content>>
+
+</ion-content>
