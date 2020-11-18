@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Student } from '../student/student';
+import { StudentService } from '../student/student.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  student: Student;
+
+  constructor(private studentService: StudentService) {}
+
+  ngOnInit() {
+    
+  }
 
 }
