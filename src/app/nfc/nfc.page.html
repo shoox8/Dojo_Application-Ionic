@@ -10,6 +10,14 @@
     <h3>Acerca el teléfono</h3>
   </div>
 
-  
+  <ion-card *ngIf="scanned">
+    <ion-card-header>
+      Parametros NFC recogidos.
+    </ion-card-header>
+    <ion-card-content>
+      <p>Account Tag ID: {{ tagId }}</p>
+    </ion-card-content>
+  </ion-card>
+
  
 </ion-content>

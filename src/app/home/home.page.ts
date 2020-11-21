@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { dirname } from 'path';
 import { Student } from '../student/student';
 import { StudentService } from '../student/student.service';
 
