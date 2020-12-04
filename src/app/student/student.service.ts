@@ -13,7 +13,10 @@ export class StudentService {
 
   constructor(private http: HttpClient) {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.token = currentUser.token;
+    
+    if (currentUser != null){
+      this.token = currentUser.token;
+    }
 
     this.httpOptions = {
       headers: new HttpHeaders({

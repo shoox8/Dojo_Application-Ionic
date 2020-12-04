@@ -8,7 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import {NFC, Ndef} from '@ionic-native/nfc/ngx';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     StatusBar,
+    NFC,
+    Ndef,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
