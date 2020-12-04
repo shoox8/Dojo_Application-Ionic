@@ -28,15 +28,15 @@ export class StudentService {
   }
 
   get(id): Observable<any> {
-    return this.http.get(this.apiUrl+'api/users/'+id);
+    return this.http.get(this.apiUrl+'api_v1/users/'+id);
   }
 
   getByUsername(username): Observable<any> {
-    return this.http.get(this.apiUrl+'api/users/'+username, this.httpOptions);
+    return this.http.get(this.apiUrl+'api_v1/users/'+username, this.httpOptions);
   }
 
   update(id, data): Observable<any> {
-    return this.http.put(this.apiUrl+'api/users/'+id, data, this.httpOptions);
+    return this.http.put(this.apiUrl+'api_v1/users/'+id, data, this.httpOptions);
   }
 
 }

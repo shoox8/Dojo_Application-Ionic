@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { dirname } from 'path';
+// import { dirname } from 'path';
 import { Student } from '../student/student';
 import { StudentService } from '../student/student.service';
 
@@ -32,7 +32,7 @@ export class Tab1Page {
           this.student.phone = data[0].phone;
           this.student.points = data[0].points;
           this.student.to_delete = data[0].to_delete;
-          // console.log(this.student);
+          console.log(this.student);
         },
         error => {
           console.log(error);
