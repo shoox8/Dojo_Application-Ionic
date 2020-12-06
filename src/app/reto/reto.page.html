@@ -1,15 +1,82 @@
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div class="container">
-    <img src="{{imgURL}}" height="200" width="200"/>
-    <ion-button (click)="getCamera()">Camara</ion-button>
-    <ion-button (click)="getGallery()">Gallery</ion-button>
+  
+  <!---
+  <div id="container" style="margin-bottom: 200px;">
+    <ion-button expand="block" (click)="whereIam()">Obtener Coords</ion-button>
+    <p>Lat: {{lat}}, Lng: {{lng}}</p>
   </div>
- 
+ -->
+
+  <div id="map" style="height: 200px; width: 300px">
+  </div>
+
+  <div style="margin-top: 70px">
+    <ion-button style="width: 280px; height: 40px; margin-left: 18px" (click)="showActionSheet()"> 
+      Participar Nuevo Reto
+    </ion-button>
+  </div>
+  
+  <div style="height: 200px; width: 300px">
+    <img src="{{imgURL}}" height="200" width="200">
+  </div>
+
+  
+  <div style="margin-left: 13px; margin-top: 40px">
+    <h1> Retos Recientes</h1>
+    <ion-list>
+
+      <ion-item style="margin-top: 13px; margin-bottom: 20px">
+        
+        <div style="height: 60px; width: 60px; background-color: whitesmoke; margin-right: 20px; border-radius: 10%">
+        </div>
+        
+        <ion-chip color="primary">
+          <ion-icon name="pin" color="primary"></ion-icon>
+          <ion-label>Ciudad</ion-label>
+        </ion-chip>
+        <ion-chip color="success">
+          <ion-label>+10</ion-label>
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+        </ion-chip>
+      </ion-item>
+     
+      <ion-item style="margin-top: 13px">
+        <div style="height: 60px; width: 60px; background-color: whitesmoke; margin-right: 20px; border-radius: 10%">
+        </div>
+        
+        <ion-chip color="primary">
+          <ion-icon name="pin" color="primary"></ion-icon>
+          <ion-label>Ciudad</ion-label>
+        </ion-chip>
+        <ion-chip color="success">
+          <ion-label>+10</ion-label>
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+        </ion-chip>
+      </ion-item>
+      
+      <ion-item style="margin-top: 13px">
+        <div style="height: 60px; width: 60px; background-color: whitesmoke; margin-right: 20px; border-radius: 10%">
+        
+        </div>
+        
+        <ion-chip color="primary">
+          <ion-icon name="pin" color="primary"></ion-icon>
+          <ion-label>Ciudad</ion-label>
+        </ion-chip>
+        <ion-chip color="success">
+          <ion-label>+10</ion-label>
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+        </ion-chip>
+        
+      </ion-item>
+    </ion-list>
+
+
+
+  </div>
 </ion-content>
