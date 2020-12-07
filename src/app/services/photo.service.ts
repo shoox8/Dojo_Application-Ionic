@@ -26,7 +26,17 @@ export class PhotoService {
     };
   }
 
-  post(data): Observable<any> {
+  postToCloudinary(data): Observable<any> {
+    let httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+        })
+    };
+
+    return this.http.post('https://api.cloudinary.com/v1_1/hufhdyfam/image/upload', data, httpOptions);
+  }
+
+  postToAPI(data): Observable<any> {
     return this.http.post(this.apiUrl+'api_v1/PhotoStudent/', data, this.httpOptions);
   }
 

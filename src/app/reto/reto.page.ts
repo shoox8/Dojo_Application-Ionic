@@ -5,6 +5,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { PopoverController } from '@ionic/angular';
 import { PhotoService } from '../services/photo.service';
 declare var google: any;
+declare var require: any
 @Component({
   selector: 'app-tab3',
   templateUrl: 'reto.page.html',
@@ -16,6 +17,7 @@ export class Tab3Page {
   lng;
   map: any;
   imgURL;
+  urlInCloudinary: string;
 
   constructor(
     private geo: Geolocation,
@@ -118,20 +120,39 @@ export class Tab3Page {
 
   } //ShowActionSheet
 
+  uploadPhoto() {
+    let idUser = JSON.parse(localStorage.getItem('idUser'));
+    let data = {
+      "file": this.imgURL,
+      "upload_preset": "yd4h1qkj",
+      "public_id": this.lat + this.lng + idUser.idUser
+    }
+   
+    this.photoService.postToCloudinary(data)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.urlInCloudinary = data.url;
+          this.postPhoto();
+        },
+        error => {console.log(error)}
+      );
+
+  }
 
   postPhoto() {
     let idUser = JSON.parse(localStorage.getItem('idUser'));
     // console.log(idUser.idUser);
 
     let data = {
-      "photoPath": "prueba",
+      "photoPath": this.urlInCloudinary,
       "latitude": this.lat,
       "longitude": this.lng,
       "location": this.lat + this.lng,
       "student": idUser.idUser
     }
 
-    this.photoService.post(data)
+    this.photoService.postToAPI(data)
       .subscribe(
         data => {console.log(data)},
         error => {console.log(error)}

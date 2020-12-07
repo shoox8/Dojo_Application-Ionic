@@ -11,8 +11,12 @@
     <p>Lat: {{lat}}, Lng: {{lng}}</p>
   </div>
 
-  <div style="margin-bottom: 500px;">
+  <!-- <div style="margin-bottom: 500px;">
     <ion-button expand="block" (click)="postPhoto()">Subir Foto</ion-button>
+  </div> -->
+
+  <div style="margin-bottom: 400px;">
+    <ion-button expand="block" (click)="uploadPhoto()">Subir Foto a Cloudinary</ion-button>
   </div>
  
 
@@ -25,6 +29,10 @@
     </ion-button>
   </div>
   
+  <div style="height: 200px; width: 300px">
+    <img src="{{imgURL}}" height="200" width="200">
+  </div>
+
   <div style="height: 200px; width: 300px">
     <img src="{{imgURL}}" height="200" width="200">
   </div>
