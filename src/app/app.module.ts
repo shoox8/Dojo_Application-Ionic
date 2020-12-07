@@ -11,6 +11,9 @@ import { AppComponent } from './app.component';
 import {NFC, Ndef} from '@ionic-native/nfc/ngx';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
+import { PopoverController } from '@ionic/angular';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,6 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     NFC,
+    Camera,
+    PopoverController,
+    Geolocation,
     Ndef,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

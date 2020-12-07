@@ -8,7 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Camera } from '@ionic-native/camera/ngx';
 
-import { Tab3PageRoutingModule } from './reto-routing.module'
+import { Tab3PageRoutingModule } from './reto-routing.module';
 import { AppComponent } from '../app.component';
 
 @NgModule({
