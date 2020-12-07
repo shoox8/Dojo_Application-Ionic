@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
+import { Belt } from '../models/belt';
+import { ServiceDojo } from '../models/serviceDojo';
 // import { dirname } from 'path';
 
-import { Student } from '../student/student';
-import { StudentService } from '../student/student.service';
+import { Student } from '../models/student';
+import { StudentService } from '../services/student.service';
+import { BeltService } from '../services/belt.service';
+import { ServiceDojoService } from '../services/serviceDojo.service';
 
 @Component({
   selector: 'app-tab1',
@@ -13,29 +17,72 @@ export class Tab1Page {
 
   student: Student;
 
-  constructor(private studentService: StudentService) {
+  constructor( private studentService: StudentService, 
+               private beltService: BeltService, 
+               private serviceDojoService: ServiceDojoService) {
     this.student = new Student();
+    this.student.belt = new Belt();
+    this.student.belt.service = new ServiceDojo()
   }
 
   ngOnInit() {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     // this.token = currentUser.token; // your token
-    // console.log(this.token);
-    this.studentService.getByUsername(currentUser.username)
+    this.getStudentData(currentUser.username);
+  }
+
+  getStudentData(username) {
+    this.studentService.getByUsername(username)
       .subscribe(
         data => {
+          // console.log(data);
           this.student.username = data[0].username; 
           this.student.dni = data[0].dni;
           this.student.dateofBirth = data[0].dateofBirth;
           this.student.username = data[0].username;
-          this.student.first_name = data[0].first_name;
-          this.student.last_name = data[0].last_name;
+          this.student.completeName = data[0].completeName;
           this.student.phone = data[0].phone;
           this.student.points = data[0].points;
           this.student.to_delete = data[0].to_delete;
-          console.log(this.student);
+          this.student.belt.id = data[0].belts[0].belt;
+          this.student.belt.attendedClasses = data[0].belts[0].attendedClasses;
+          this.student.belt.service.id = data[0].belts[0].studentService[0].serviceDojo;
+          // console.log(this.student);
+          this.getBeltsData();
         },
         error => {
+          console.log(error);
+        }
+      );
+  }
+
+  getBeltsData(){
+    // console.log(this.student.belt.id);
+    this.beltService.get(this.student.belt.id)
+      .subscribe(
+        data => {
+          // console.log(data);
+          this.student.belt.colour = data.name;
+          this.student.belt.requiredClasses = data.classesRequired;
+          this.student.belt.nextBelt = data.nextBelt;
+          // console.log(this.student);
+          this.getServicesData();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  getServicesData() {
+    this.serviceDojoService.get(this.student.belt.service.id)
+      .subscribe(
+        data => {
+          console.log(data.name);
+          this.student.belt.service.name = data.name;
+          console.log(this.student);
+        },
+        error =>{
           console.log(error);
         }
       );

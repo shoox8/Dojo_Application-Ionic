@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Student } from '../student/student'; 
-import { StudentService } from '../student/student.service';
+import { Student } from '../models/student'; 
+import { StudentService } from '../services/student.service';
 
 
 @Component({
@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
       .subscribe(
         data => {
           localStorage.setItem('currentUser', JSON.stringify({ token: data.token, username: credentials.username}));
-          // console.log(data);
+          console.log(data);
           this.router.navigate(['/tabs/tab1']);
         },
         error => {
