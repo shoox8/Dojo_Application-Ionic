@@ -3,6 +3,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { Camera } from '@ionic-native/camera/ngx';
 import { PopoverController } from '@ionic/angular';
+import { PhotoService } from '../services/photo.service';
 declare var google: any;
 @Component({
   selector: 'app-tab3',
@@ -19,7 +20,8 @@ export class Tab3Page {
   constructor(
     private geo: Geolocation,
     private actionSheetCrtl: ActionSheetController,
-    private camera: Camera
+    private camera: Camera,
+    private photoService: PhotoService,
   ) {
 
   }
@@ -115,4 +117,25 @@ export class Tab3Page {
     }).then( res => res.present());
 
   } //ShowActionSheet
+
+
+  postPhoto() {
+    let idUser = JSON.parse(localStorage.getItem('idUser'));
+    // console.log(idUser.idUser);
+
+    let data = {
+      "photoPath": "prueba",
+      "latitude": this.lat,
+      "longitude": this.lng,
+      "location": this.lat + this.lng,
+      "student": idUser.idUser
+    }
+
+    this.photoService.post(data)
+      .subscribe(
+        data => {console.log(data)},
+        error => {console.log(error)}
+      );
+  }
+
 } //Fin Class Tab3page

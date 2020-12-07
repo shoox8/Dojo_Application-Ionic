@@ -1,7 +1,7 @@
 import { Belt } from './belt';
 
 export class Student {
-    //id: number;
+    id: number;
     dateofBirth: Date;
     dni: string;
     username: string;

@@ -36,6 +36,8 @@ export class Tab1Page {
       .subscribe(
         data => {
           // console.log(data);
+          localStorage.setItem('idUser', JSON.stringify({ idUser: data[0].id }));
+          this.student.id = data[0].id;
           this.student.username = data[0].username; 
           this.student.dni = data[0].dni;
           this.student.dateofBirth = data[0].dateofBirth;
