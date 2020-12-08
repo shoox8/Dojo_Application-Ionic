@@ -18,6 +18,10 @@
   <div style="margin-bottom: 400px;">
     <ion-button expand="block" (click)="uploadPhoto()">Subir Foto a Cloudinary</ion-button>
   </div>
+
+    <div style="margin-bottom: 400px;">
+    <ion-button expand="block" (click)="postPhoto()">Heroku</ion-button>
+  </div>
  
 
   <div id="map" style="height: 200px; width: 300px">
@@ -33,14 +37,13 @@
     <img src="{{imgURL}}" height="200" width="200">
   </div>
 
-  <div style="height: 200px; width: 300px">
-    <img src="{{imgURL}}" height="200" width="200">
-  </div>
 
   
   <div style="margin-left: 13px; margin-top: 40px">
     <h1> Retos Recientes</h1>
-    <ion-list>
+    {{urlInCloudinary}} 
+
+<ion-list>
 
       <ion-item style="margin-top: 13px; margin-bottom: 20px">
         

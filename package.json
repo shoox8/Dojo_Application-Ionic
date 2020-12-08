@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1002.0",
-    "@angular/cli": "~10.0.5",
+    "@angular/cli": "10.0.8",
     "@angular/compiler": "~10.0.0",
     "@angular/compiler-cli": "~10.0.0",
     "@angular/language-service": "~10.0.0",
@@ -79,7 +79,9 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "phonegap-nfc": {},
-      "cordova-plugin-geolocation": {}
+      "cordova-plugin-geolocation": {
+        "GPS_REQUIRED": "true"
+      }
     },
     "platforms": [
       "android"
