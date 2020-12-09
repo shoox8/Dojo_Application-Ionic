@@ -15,6 +15,7 @@ export class Tab2Page {
   scanned: boolean;
   tagId: string;
   readingTag: boolean = false;
+  tag:string;
 
 
   constructor(public navCtrl: NavController, private nfc: NFC, private ndef: Ndef) {
@@ -25,7 +26,8 @@ export class Tab2Page {
     this.granted = false;
     this.scanned = false;
     this.tagId = "";
-  }
+    this.tag="";
+  };
 
   ionViewDidEnter() {
     this.nfc.enabled().then((resolve) => {
@@ -34,33 +36,57 @@ export class Tab2Page {
       alert("NFC is not supported by your Device");
     });
   }
-
+  // https://github.com/lionlancer/asdfghjkl/blob/master/www/phonegap-nfc-215.js
   addListenNFC() {
-
-    this.nfc.addTagDiscoveredListener(nfcEvent => this.sesReadNFC(nfcEvent.tag)).subscribe(data => {
+    // https://forum.ionicframework.com/t/read-ndef-data-in-a-nfc-tag/86307/11
+    // https://stackoverflow.com/questions/36006013/nfc-reader-apache-cordova
+    this.nfc.addNdefListener(nfcEvent => this.sesReadNFC(nfcEvent.tag)).subscribe(data => {
       if (data && data.tag && data.tag.id) {
         let tagId = this.nfc.bytesToHexString(data.tag.id);
-        
+        // let tagId = this.nfc.bytesToHexString(data.tag.uriRecord);
+        // let tagId = this.nfc.bytesToHexString(data.tag.TextRecord);
+        //let tag=JSON.stringify(data.tag);
+        // let tag=data.tag.textRecord;
         /*let datatag = data.tag.ndefMessage[0].payload;
         this.datatag = datatag;*/
+        let payload = data.tag.ndefMessage[1]["payload"];
+
+        // let payload = "5";
+        //let tagContent = this.nfc.bytesToString(payload);
+        alert(JSON.stringify(payload));
 
         this.tagId = tagId;
         this.scanned = true;
-          /*only testing data consider to ask web api for access
+        // this.tag=JSON.stringify(tag);
+        // let payload = data.tag.ndefMessage;
+        let tagContent = this.nfc.bytesToString(payload).substring(1);
+        /*only testing data consider to ask web api for access
           this.granted = [
             "7d3c6179"
           ].indexOf(tagId) != -1;
           */
+         //this.tag=payload;
+         this.tag=tagContent;
 
         } else {
           alert('NFC_NOT_DETECTED');
         }
+
+
+      
     });
+
+ 
 }
 
   sesReadNFC(data): void {
 
   }
+
+  parseTag(nfcEvent): void {
+
+  }
+
 
   failNFC(err) {
     alert("Error while reading: Please Retry");
