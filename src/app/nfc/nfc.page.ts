@@ -16,6 +16,7 @@ export class Tab2Page {
   tagId: string;
   readingTag: boolean = false;
   tag:string;
+  fecha:string;
 
 
   constructor(public navCtrl: NavController, private nfc: NFC, private ndef: Ndef) {
@@ -27,6 +28,9 @@ export class Tab2Page {
     this.scanned = false;
     this.tagId = "";
     this.tag="";
+    this.fecha=new Date().toISOString();
+  
+    
   };
 
   ionViewDidEnter() {
@@ -53,13 +57,14 @@ export class Tab2Page {
 
         // let payload = "5";
         //let tagContent = this.nfc.bytesToString(payload);
-        alert(JSON.stringify(payload));
+        // https://living-sun.com/es/datetime/230384-locale-time-on-ionic2-datetime-picker-datetime-angular-typescript-ionic2-toisostring.html
+        alert(JSON.stringify(payload)+'----'+ this.fecha);
 
         this.tagId = tagId;
         this.scanned = true;
         // this.tag=JSON.stringify(tag);
         // let payload = data.tag.ndefMessage;
-        let tagContent = this.nfc.bytesToString(payload).substring(1);
+        let tagContent = this.nfc.bytesToString(payload).substring(3);
         /*only testing data consider to ask web api for access
           this.granted = [
             "7d3c6179"
@@ -67,6 +72,8 @@ export class Tab2Page {
           */
          //this.tag=payload;
          this.tag=tagContent;
+
+
 
         } else {
           alert('NFC_NOT_DETECTED');
