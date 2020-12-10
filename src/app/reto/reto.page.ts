@@ -177,9 +177,11 @@ export class Tab3Page {
 
     this.photoService.postToAPI(data)
       .subscribe(
-        data => {console.log(data)},
+        data => {alert(idUser.user);console.log(data)},
         error => {console.log(error)}
       );
   }
+
+
 
 } //Fin Class Tab3page

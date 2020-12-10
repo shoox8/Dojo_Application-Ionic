@@ -27,7 +27,12 @@ export class StudentDojoBeltService {
   }
 
   getStudentLesson(student, service, date): Observable<any> {
+    //date="2020-12-11"
     return this.http.get(this.apiUrl+'api_v1/studentLesson/'+student+'/'+service+'/'+date, this.httpOptions);
+  }
+
+  postStudentLesson(data): Observable<any> {
+    return this.http.post(this.apiUrl+'api_v1/studentLesson/',data, this.httpOptions);
   }
 
 }

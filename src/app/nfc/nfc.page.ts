@@ -3,6 +3,7 @@ import { ActionSheetController } from '@ionic/angular';
 import { NFC, Ndef } from '@ionic-native/nfc/ngx';
 import { NavController, Platform, AlertController } from '@ionic/angular';
 import { StudentDojoBeltService } from '../services/serviceDojoStudentBelt.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class Tab2Page {
   fecha;
   lesson;
   service;
+  user;
   // fecha:string;
 
 
@@ -33,9 +35,10 @@ export class Tab2Page {
     this.scanned = false;
     this.tagId = "";
     this.tag="";
-    // this.fecha=new Date().toISOString().split("T")[0];
+    // this.fecha=new Date().toISOString();
+    this.fecha=new Date().toISOString().split("T")[0];
     // this.fecha=new Date().toISOString().substring(0, 10);
-    this.fecha=new Date().getDate();
+    // this.fecha=new Date().getDate();
 
   };
 
@@ -49,9 +52,11 @@ export class Tab2Page {
   // https://github.com/lionlancer/asdfghjkl/blob/master/www/phonegap-nfc-215.js
   addListenNFC() {
 
-    let idUser = JSON.parse(localStorage.getItem('idUser'));
+    
+    
     // https://forum.ionicframework.com/t/read-ndef-data-in-a-nfc-tag/86307/11
     // https://stackoverflow.com/questions/36006013/nfc-reader-apache-cordova
+    
     this.nfc.addNdefListener(nfcEvent => this.sesReadNFC(nfcEvent.tag)).subscribe(data => {
       if (data && data.tag && data.tag.id) {
         let tagId = this.nfc.bytesToHexString(data.tag.id);
@@ -61,19 +66,20 @@ export class Tab2Page {
         //let tag=JSON.stringify(data.tag);
         // let tag=data.tag.textRecord;
 
-        this.service=data.tag.ndefMessage[1]["payload"];
-        this.service=this.service.substring(3);
-        let payload = this.service;
+        let payload=data.tag.ndefMessage[0]["payload"]
+        this.service=this.nfc.bytesToString(payload).substring(3);
+        // this.service=this.service.substring(3);
+        // let payload = this.service;
         //let tagContent = this.nfc.bytesToString(payload);
         // https://living-sun.com/es/datetime/230384-locale-time-on-ionic2-datetime-picker-datetime-angular-typescript-ionic2-toisostring.html
-        alert(JSON.stringify(payload)+'----'+ this.fecha);
+        // alert(this.user.idUser +'--'+this.service+'--'+ this.fecha);
 
         this.tagId = tagId;
         this.scanned = true;
         // this.tag=JSON.stringify(tag);
         // let payload = data.tag.ndefMessage;
         // let tagContent = this.nfc.bytesToString(payload).substring(3);
-        let tagContent = this.nfc.bytesToString(payload);
+        let tagContent = this.nfc.bytesToString(payload).substring(3);
         /*only testing data consider to ask web api for access
           this.granted = [
             "7d3c6179"
@@ -82,7 +88,7 @@ export class Tab2Page {
          //this.tag=payload;
          this.tag=tagContent;
 
-
+          this.getlesson();
 
         } else {
           alert('NFC_NOT_DETECTED');
@@ -92,18 +98,53 @@ export class Tab2Page {
       
     });
 
+
     
-    this.StudentDojoBeltService.getStudentLesson(idUser, this.service, this.fecha).subscribe(
+ 
+}
+
+  getlesson():void{
+    let user = JSON.parse(localStorage.getItem('idUser'));
+    alert(('user '+user.idUser+'--   service '+ this.service +'-- fecha: ' +this.fecha));
+    this.StudentDojoBeltService.getStudentLesson(user.idUser , this.service, this.fecha).subscribe(
       data => {
-        alert(data);
-        // this.lesson = data.address.city_district+'-'+data.address.city+'-'+data.address.postcode+','+data.address.country; 
-        
+        this.lesson=data[0].id;
+        alert(('user '+user.idUser+' lesson '+ data[0].id));
+        this.postlessonStudent()
+
+       
+      },
+      error => {console.log(error)}
+    );
+    
+   /* 
+    if(this.lesson>1){
+    }
+    else{alert("te equivocaste de fecha y hora")}
+    */
+    }
+    
+
+  postlessonStudent(){
+    let user = JSON.parse(localStorage.getItem('idUser'));
+    alert("antes del post"+ this.lesson+"usuario: "+user.idUser )
+
+    let data = {
+      "student":  user.idUser,
+      "lesson": this.lesson,
+      "assistance":"1"
+    }
+
+    this.StudentDojoBeltService.postStudentLesson(data).subscribe(
+      data => {
+        alert(data[0].id);
+
       },
       error => {console.log(error)}
     );
 
- 
-}
+
+  }
 
   sesReadNFC(data): void {
 
