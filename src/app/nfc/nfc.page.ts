@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { NFC, Ndef } from '@ionic-native/nfc/ngx';
 import { NavController, Platform, AlertController } from '@ionic/angular';
+import { StudentDojoBeltService } from '../services/serviceDojoStudentBelt.service';
+
 
 @Component({
   selector: 'app-tab2',
@@ -16,10 +18,13 @@ export class Tab2Page {
   tagId: string;
   readingTag: boolean = false;
   tag:string;
-  fecha:string;
+  fecha;
+  lesson;
+  service;
+  // fecha:string;
 
 
-  constructor(public navCtrl: NavController, private nfc: NFC, private ndef: Ndef) {
+  constructor(public navCtrl: NavController, private nfc: NFC, private ndef: Ndef, private StudentDojoBeltService: StudentDojoBeltService) {
     this.resetScanData();
   }
 
@@ -28,9 +33,10 @@ export class Tab2Page {
     this.scanned = false;
     this.tagId = "";
     this.tag="";
-    this.fecha=new Date().toISOString();
-  
-    
+    // this.fecha=new Date().toISOString().split("T")[0];
+    // this.fecha=new Date().toISOString().substring(0, 10);
+    this.fecha=new Date().getDate();
+
   };
 
   ionViewDidEnter() {
@@ -42,20 +48,22 @@ export class Tab2Page {
   }
   // https://github.com/lionlancer/asdfghjkl/blob/master/www/phonegap-nfc-215.js
   addListenNFC() {
+
+    let idUser = JSON.parse(localStorage.getItem('idUser'));
     // https://forum.ionicframework.com/t/read-ndef-data-in-a-nfc-tag/86307/11
     // https://stackoverflow.com/questions/36006013/nfc-reader-apache-cordova
     this.nfc.addNdefListener(nfcEvent => this.sesReadNFC(nfcEvent.tag)).subscribe(data => {
       if (data && data.tag && data.tag.id) {
         let tagId = this.nfc.bytesToHexString(data.tag.id);
+        
         // let tagId = this.nfc.bytesToHexString(data.tag.uriRecord);
         // let tagId = this.nfc.bytesToHexString(data.tag.TextRecord);
         //let tag=JSON.stringify(data.tag);
         // let tag=data.tag.textRecord;
-        /*let datatag = data.tag.ndefMessage[0].payload;
-        this.datatag = datatag;*/
-        let payload = data.tag.ndefMessage[1]["payload"];
 
-        // let payload = "5";
+        this.service=data.tag.ndefMessage[1]["payload"];
+        this.service=this.service.substring(3);
+        let payload = this.service;
         //let tagContent = this.nfc.bytesToString(payload);
         // https://living-sun.com/es/datetime/230384-locale-time-on-ionic2-datetime-picker-datetime-angular-typescript-ionic2-toisostring.html
         alert(JSON.stringify(payload)+'----'+ this.fecha);
@@ -64,7 +72,8 @@ export class Tab2Page {
         this.scanned = true;
         // this.tag=JSON.stringify(tag);
         // let payload = data.tag.ndefMessage;
-        let tagContent = this.nfc.bytesToString(payload).substring(3);
+        // let tagContent = this.nfc.bytesToString(payload).substring(3);
+        let tagContent = this.nfc.bytesToString(payload);
         /*only testing data consider to ask web api for access
           this.granted = [
             "7d3c6179"
@@ -82,6 +91,16 @@ export class Tab2Page {
 
       
     });
+
+    
+    this.StudentDojoBeltService.getStudentLesson(idUser, this.service, this.fecha).subscribe(
+      data => {
+        alert(data);
+        // this.lesson = data.address.city_district+'-'+data.address.city+'-'+data.address.postcode+','+data.address.country; 
+        
+      },
+      error => {console.log(error)}
+    );
 
  
 }
