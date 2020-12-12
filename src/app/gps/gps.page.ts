@@ -89,19 +89,42 @@ export class Tab4Page implements OnInit{
   }
 
   addMarker(markers: Photo) {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const iconic = {
       url: markers.photoPath,
-      scaledSize: new google.maps.Size(70,70),
+      scaledSize: new google.maps.Size(35,35),
     };
-    const infowindoww = new google.maps.InfoWindow({
-      content: "<span>any html goes here</span>"
-     });
-    return new google.maps.Marker({
+
+    const contentString =
+    '<div id="content">' +
+    "<strong> Usuario: --"+currentUser.username+"</strong>"+
+    "<strong> Localización: --"+markers.title+"</strong>"+
+
+
+    "<img src="+markers.photoPath+"  width='100' "+"height='120'>"+
+    "</div>" +
+    "</div>";
+
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString,
+    });
+
+
+
+
+    const markeerr= new google.maps.Marker({ 
+    // const marker =new google.maps.Marker({
       position: markers.position,
       map: this.map,
       icon: iconic,
       title: markers.title
     });
+
+    markeerr.addListener("click", () => {
+      infowindow.open(this.map, markeerr);
+    });
+
+   // return marker;
   }
 
 }
