@@ -58,6 +58,7 @@ export class Tab2Page {
     // https://stackoverflow.com/questions/36006013/nfc-reader-apache-cordova
     
     this.nfc.addNdefListener(nfcEvent => this.sesReadNFC(nfcEvent.tag)).subscribe(data => {
+
       if (data && data.tag && data.tag.id) {
         let tagId = this.nfc.bytesToHexString(data.tag.id);
         

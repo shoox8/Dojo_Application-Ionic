@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.container h3{
+    color: black;
+}
+
+.container img{
+    width: 150px;
+    height: auto;
+}

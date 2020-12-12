@@ -22,6 +22,11 @@ const routes: Routes = [
         loadChildren: () => import('../reto/reto.module').then(m => m.Tab3PageModule)
       },
       {
+
+        path: 'tab4',
+         loadChildren: () => import('../gps/gps.module').then(m => m.Tab4PageModule)
+       },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
