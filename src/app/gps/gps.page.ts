@@ -30,7 +30,7 @@ export class Tab4Page implements OnInit{
 
   ngOnInit() {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.loadMap();
+    //this.loadMap();
     this.getPhotos(currentUser.username);
 
   }
@@ -55,6 +55,7 @@ export class Tab4Page implements OnInit{
             }
             this.markers.push(photo_aux);
           };
+          this.loadMap()
           // console.log(this.photos);
         },
         error => {
@@ -68,11 +69,11 @@ export class Tab4Page implements OnInit{
     // create a new map by passing HTMLElement
     const mapEle: HTMLElement = document.getElementById('map');
     // create LatLng object
-    const myLatLng = {lat: 35, lng: 0};
+    const myLatLng = {lat: 37.9, lng: -4.7};
     // create map
     this.map = new google.maps.Map(mapEle, {
       center: myLatLng,
-      zoom: 12
+      zoom: 11
     });
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
