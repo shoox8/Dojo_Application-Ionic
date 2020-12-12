@@ -1,7 +1,12 @@
 export class Photo {
+    "id": number;
+    "title": string;
     "photoPath": string;
-    "latitude": string;
-    "longitude": string;
-    "location": string;
-    "student": string;
+    "position": Position;
+    "student": number;
+}
+
+export class Position {
+    "lat": string;
+    "lng": string
 }

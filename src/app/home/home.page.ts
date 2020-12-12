@@ -35,7 +35,8 @@ export class Tab1Page {
     this.studentService.getByUsername(username)
       .subscribe(
         data => {
-          // console.log(data);
+          console.log(data);
+          // console.log("hola "+ data.id);
           localStorage.setItem('idUser', JSON.stringify({ idUser: data[0].id }));
           this.student.id = data[0].id;
           this.student.username = data[0].username; 
@@ -49,7 +50,8 @@ export class Tab1Page {
           this.student.belt.id = data[0].belts[0].belt;
           this.student.belt.attendedClasses = data[0].belts[0].attendedClasses;
           this.student.belt.service.id = data[0].belts[0].studentService[0].serviceDojo;
-          // console.log(this.student);
+          console.log(Object.keys(data[0].photos).length);
+          console.log(this.student);
           this.getBeltsData();
         },
         error => {
