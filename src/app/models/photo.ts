@@ -7,6 +7,6 @@ export class Photo {
 }
 
 export class Position {
-    "lat": string;
-    "lng": string
+    "lat": number;
+    "lng": number
 }
