@@ -1,16 +1,12 @@
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    flex-direction: column;
-}
-
-.container h3{
-    color: black;
-}
-
-.container img{
-    width: 150px;
-    height: auto;
-}
+ion-content {
+    #map {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 150ms ease-in;
+      display: block;
+      &.show-map{
+        opacity: 1;
+      }
+    }
+  }

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab4Page } from './gps.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
+
 import { Tab4PageRoutingModule } from './gps-routing.module';
 
 @NgModule({
