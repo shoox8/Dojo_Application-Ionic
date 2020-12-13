@@ -38,7 +38,11 @@ export class Tab4Page implements OnInit{
     this.getPhotos(currentUser.username);
 
   }
+  ionViewDidEnter(){
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.getPhotos(currentUser.username);
 
+  }
   
   getPhotos(username) { 
     this.studentService.getByUsername(username)
