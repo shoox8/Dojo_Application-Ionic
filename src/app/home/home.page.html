@@ -13,8 +13,8 @@
     <ion-col size="7" style="top: 30px; right: 10px">
       <h5>{{student.completeName}}</h5>
       <ion-chip>
-        <ion-icon name="egg-outline"></ion-icon>
-        <ion-label>Principiante</ion-label>
+        <ion-icon name="flash-outline"></ion-icon>
+        <ion-label>{{student.points}} puntos</ion-label>
       </ion-chip>
     </ion-col>
   </ion-row>
@@ -27,6 +27,23 @@
     <img src="https://i.imgur.com/OUjaEAU.png">
   </ion-item>
 </ion-row>
+
+  <!--Siguiente Cinturon-->
+  <ion-row style="padding-top: 15px; padding-left: 8px">
+    <ion-card style="width: 300px; border-radius: 10px">
+      <ion-item>
+        <ion-label> Siguiente Cinturón</ion-label>
+        <ion-button fill="outline" slot="end">Ver</ion-button>
+      </ion-item>
+      <ion-card-content class="ion-text-left">
+        <ion-card-subtitle class="ion-text-right">
+          {{student.belt.attendedClasses}} / 
+          {{student.belt.requiredClasses}}
+        </ion-card-subtitle>
+        <ion-progress-bar color="primary" class="pbar" value="{{student.belt.attendedClasses / student.belt.requiredClasses }}"></ion-progress-bar>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
 
   <!--Proximas Clases-->
   <ion-row >
@@ -50,22 +67,7 @@
     </ion-col>
   </ion-row>
 
-  <!--Siguiente Cinturon-->
-  <ion-row style="padding-top: 50px; padding-left: 8px">
-    <ion-card style="width: 300px; border-radius: 10px">
-      <ion-item>
-        <ion-label> Siguiente Cinturón</ion-label>
-        <ion-button fill="outline" slot="end">Ver</ion-button>
-      </ion-item>
-      <ion-card-content class="ion-text-left">
-        <ion-card-subtitle class="ion-text-right">
-          {{student.belt.attendedClasses}} / 
-          {{student.belt.requiredClasses}}
-        </ion-card-subtitle>
-        <ion-progress-bar color="primary" class="pbar" value="{{student.belt.attendedClasses / student.belt.requiredClasses }}"></ion-progress-bar>
-      </ion-card-content>
-    </ion-card>
-  </ion-row>
+
 
 
 </ion-content>
