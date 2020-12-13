@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 declare var google;
 import { StudentService } from '../services/student.service';
 import { Photo, Position } from '../models/photo';
+
+
+
+
 interface Marker {
   position: {
     lat: number,
@@ -79,38 +83,46 @@ export class Tab4Page implements OnInit{
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
       this.renderMarkers();
       mapEle.classList.add('show-map');
+      
     });
   }
 
   renderMarkers() {
     console.log(this.markers),
+    
     this.markers.forEach(marker => {
       this.addMarker(marker);
     });
   }
 
-  addMarker(markers: Photo) {
+  addMarker(markers: Marker) {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const iconic = {
-      url: markers.photoPath,
+      url:'https://icon-library.com/images/picture-icon-png/picture-icon-png-3.jpg',
+      //url: markers.photoPath,
       scaledSize: new google.maps.Size(35,35),
     };
+    
 
     const contentString =
     '<div id="content">' +
     "<strong> Usuario: --"+currentUser.username+"</strong>"+
-    "<strong> Localización: --"+markers.title+"</strong>"+
+    "<strong> Localización: --"+markers.title+"</strong>"+"<a href="+markers.photoPath+">foto link</a>"+
 
 
-    "<img src="+markers.photoPath+"  width='100' "+"height='120'>"+
+    '<img src='+markers.photoPath+'  width="40" height="50" alt="" />'+
     "</div>" +
     "</div>";
 
     const infowindow = new google.maps.InfoWindow({
-      content: contentString,
+
+    //const infowindow = new google.maps.htmlInfoWindow({
+      //content: contentString,
+      maxWidth: 400
+
     });
 
-
+    infowindow.setContent(contentString);
 
 
     const markeerr= new google.maps.Marker({ 
