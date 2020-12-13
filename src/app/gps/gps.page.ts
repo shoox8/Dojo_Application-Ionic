@@ -110,7 +110,7 @@ export class Tab4Page implements OnInit{
     "<strong> Localización: --"+markers.title+"</strong>"+"<a href="+markers.photoPath+">foto link</a>"+
 
 
-    '<img src='+markers.photoPath+'  width="40" height="50" alt="" />'+
+    // '<img src='+markers.photoPath+'  width="40" height="50" alt="" />'+
     "</div>" +
     "</div>";
 
