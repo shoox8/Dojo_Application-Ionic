@@ -30,6 +30,11 @@ export class Tab1Page {
     this.getStudentData(currentUser.username);
   }
 
+  ionViewDidEnter() {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.getStudentData(currentUser.username);
+  }
+
   getStudentData(username) {
     this.studentService.getByUsername(username)
       .subscribe(
