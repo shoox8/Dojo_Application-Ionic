@@ -60,7 +60,7 @@ export class Tab3Page {
       console.log(e);
     })
 
-  }ç
+  }
   */
 
   hide(){

@@ -13,45 +13,23 @@
     <ion-col size="7" style="top: 30px; right: 10px">
       <h5>{{student.completeName}}</h5>
       <ion-chip>
-        <ion-icon name="egg-outline"></ion-icon>
-        <ion-label>Principiante</ion-label>
+        <ion-icon name="flash" color="success"></ion-icon>
+        <ion-label>{{student.points}} puntos</ion-label>
       </ion-chip>
     </ion-col>
   </ion-row>
 
 <ion-row>
   <ion-item class="cinturon_actual"> 
-    <ion-icon name="ribbon-outline"></ion-icon>
+    <ion-icon name="ribbon-outline" color="tertiary"></ion-icon>
     <ion-label style="margin-left: 25px; margin-right: 25px;">Cinturon Actual</ion-label>
     <!--Imagen Cinturon Alumno-->  
     <img src="https://i.imgur.com/OUjaEAU.png">
   </ion-item>
 </ion-row>
 
-  <!--Proximas Clases-->
-  <ion-row >
-    <ion-col style="top: 10px; padding-left: 24px">
-    <h3>Clases esta semana</h3>
-    <div class="bar">
-      <span class="bar__hour">09:00</span>
-      <div class="bar__hour__flex">
-        <span class="bar__hour__small">Nombre del Profesor</span>
-        <span class="bar__hour__text">Materia de la Clase</span>
-      </div>
-    </div>
-    <br>
-    <div class="bar">
-      <span class="bar__hour2">11:00</span>
-      <div class="bar__hour__flex">
-        <span class="bar__hour__small">Nombre del Profesor</span>
-        <span class="bar__hour__text">Materia de la Clase</span>
-      </div>
-    </div>
-    </ion-col>
-  </ion-row>
-
   <!--Siguiente Cinturon-->
-  <ion-row style="padding-top: 50px; padding-left: 8px">
+  <ion-row style="padding-top: 10px; padding-left: 8px">
     <ion-card style="width: 300px; border-radius: 10px">
       <ion-item>
         <ion-label> Siguiente Cinturón</ion-label>
@@ -66,6 +44,30 @@
       </ion-card-content>
     </ion-card>
   </ion-row>
+
+  <!--Proximas Clases-->
+  <ion-row >
+    <ion-col style="top: 5px; padding-left: 24px">
+    <h3>Próximas Clases</h3>
+    <div class="bar">
+      <span class="bar__hour">09:30</span>
+      <div class="bar__hour__flex">
+        <span class="bar__hour__small">22/12/2020</span>
+        <span class="bar__hour__text">Principios del Hapkido</span>
+      </div>
+    </div>
+    <br>
+    <div class="bar">
+      <span class="bar__hour2">11:30</span>
+      <div class="bar__hour__flex">
+        <span class="bar__hour__small">27/12/2020</span>
+        <span class="bar__hour__text">Práctica de Hapkido</span>
+      </div>
+    </div>
+    </ion-col>
+  </ion-row>
+
+
 
 
 </ion-content>
