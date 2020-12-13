@@ -27,7 +27,6 @@ export class Tab1Page {
 
   ngOnInit() {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // this.token = currentUser.token; // your token
     this.getStudentData(currentUser.username);
   }
 
@@ -35,8 +34,7 @@ export class Tab1Page {
     this.studentService.getByUsername(username)
       .subscribe(
         data => {
-          console.log(data);
-          // console.log("hola "+ data.id);
+          // console.log(data);
           localStorage.setItem('idUser', JSON.stringify({ idUser: data[0].id }));
           this.student.id = data[0].id;
           this.student.username = data[0].username; 
@@ -47,12 +45,10 @@ export class Tab1Page {
           this.student.phone = data[0].phone;
           this.student.points = data[0].points;
           this.student.to_delete = data[0].to_delete;
-          this.student.belt.id = data[0].belts[0].belt;
-          this.student.belt.attendedClasses = data[0].belts[0].attendedClasses;
-          this.student.belt.service.id = data[0].belts[0].studentService[0].serviceDojo;
-          console.log(Object.keys(data[0].photos).length);
-          console.log(this.student);
+          this.getLastBelt(data[0].belts);
           this.getBeltsData();
+          // console.log(Object.keys(data[0].photos).length);
+          console.log(this.student);
         },
         error => {
           console.log(error);
@@ -60,16 +56,32 @@ export class Tab1Page {
       );
   }
 
+  getLastBelt(belts) {
+    let maxId = 0;
+    let attendedClasses = 0;
+    let service = 0;
+
+    for (let belt of belts) {
+      if(belt.id > maxId) {
+        maxId = belt.belt;
+        attendedClasses = belt.attendedClasses;
+        service = belt.studentService[0].serviceDojo;
+      }   
+    }
+
+    this.student.belt.id = maxId;
+    this.student.belt.attendedClasses = attendedClasses;
+    this.student.belt.service.id = service;
+  }
+
   getBeltsData(){
-    // console.log(this.student.belt.id);
     this.beltService.get(this.student.belt.id)
       .subscribe(
         data => {
-          // console.log(data);
           this.student.belt.colour = data.name;
           this.student.belt.requiredClasses = data.classesRequired;
+          this.student.belt.photo = data.photo;
           this.student.belt.nextBelt = data.nextBelt;
-          // console.log(this.student);
           this.getServicesData();
         },
         error => {
@@ -82,9 +94,7 @@ export class Tab1Page {
     this.serviceDojoService.get(this.student.belt.service.id)
       .subscribe(
         data => {
-          console.log(data.name);
           this.student.belt.service.name = data.name;
-          console.log(this.student);
         },
         error =>{
           console.log(error);

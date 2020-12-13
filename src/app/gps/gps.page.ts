@@ -60,7 +60,7 @@ export class Tab4Page implements OnInit{
             this.markers.push(photo_aux);
           };
           this.loadMap()
-          // console.log(this.photos);
+          // console.log(this.markers);
         },
         error => {
           console.log(error);
