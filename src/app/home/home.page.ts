@@ -15,6 +15,10 @@ import { ServiceDojoService } from '../services/serviceDojo.service';
 })
 export class Tab1Page {
 
+  valor_min: number;
+  valor_max: number;
+  valor: number;
+
   student: Student;
 
   constructor( private studentService: StudentService, 
@@ -22,7 +26,7 @@ export class Tab1Page {
                private serviceDojoService: ServiceDojoService) {
     this.student = new Student();
     this.student.belt = new Belt();
-    this.student.belt.service = new ServiceDojo()
+    this.student.belt.service = new ServiceDojo();
   }
 
   ngOnInit() {
@@ -90,6 +94,10 @@ export class Tab1Page {
           console.log(error);
         }
       );
+  }
+
+  calcularValor(){
+    this.valor = this.valor_min / this.valor_max;
   }
 
 }
