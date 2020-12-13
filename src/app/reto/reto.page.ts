@@ -9,14 +9,14 @@ import { StudentService } from '../services/student.service';
 import { Photo, Position } from '../models/photo';
 
 declare var google: any;
-declare var require: any
+declare var require: any;
 @Component({
   selector: 'app-tab3',
   templateUrl: 'reto.page.html',
   styleUrls: ['reto.page.scss']
 })
 export class Tab3Page {
-  
+  hidden : boolean = false;
   lat;
   lng;
   map: any;
@@ -63,9 +63,14 @@ export class Tab3Page {
   }ç
   */
 
+  hide(){
+    this.hidden = true;
+  }
+
   //getCurrentPositon llama al plugin de GPS del movil
   //watchPosition user movement?
   whereIam(){
+    
     this.geo.getCurrentPosition({
       timeout: 10000,
       enableHighAccuracy: true
@@ -126,12 +131,14 @@ export class Tab3Page {
           text: "Escoger de la galeria",
           icon: 'images-outline',
           handler: () => {
+            this.hidden = true;
             this.getGallery()
           }
         },{
           text: "Abrir la Cámara",
           icon: 'camera',
           handler: () => {
+            this.hidden = true;
             this.getCamera()
           }
         },{
@@ -147,7 +154,7 @@ export class Tab3Page {
 
   uploadPhoto() {
     //this.whereIam();
-
+    this.hidden = false;
     let idUser = JSON.parse(localStorage.getItem('idUser'));
     let data = {
       // "file": photo,
