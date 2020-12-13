@@ -15,10 +15,6 @@ import { ServiceDojoService } from '../services/serviceDojo.service';
 })
 export class Tab1Page {
 
-  valor_min: number;
-  valor_max: number;
-  valor: number;
-
   student: Student;
 
   constructor( private studentService: StudentService, 
@@ -104,10 +100,6 @@ export class Tab1Page {
           console.log(error);
         }
       );
-  }
-
-  calcularValor(){
-    this.valor = this.valor_min / this.valor_max;
   }
 
 }

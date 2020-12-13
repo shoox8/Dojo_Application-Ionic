@@ -58,8 +58,11 @@
         <ion-button fill="outline" slot="end">Ver</ion-button>
       </ion-item>
       <ion-card-content class="ion-text-left">
-        <ion-card-subtitle class="ion-text-right">10/20</ion-card-subtitle>
-        <ion-progress-bar color="primary" class="pbar" value="0.9"></ion-progress-bar>
+        <ion-card-subtitle class="ion-text-right">
+          {{student.belt.attendedClasses}} / 
+          {{student.belt.requiredClasses}}
+        </ion-card-subtitle>
+        <ion-progress-bar color="primary" class="pbar" value="{{student.belt.attendedClasses / student.belt.requiredClasses }}"></ion-progress-bar>
       </ion-card-content>
     </ion-card>
   </ion-row>

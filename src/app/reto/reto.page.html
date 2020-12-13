@@ -5,42 +5,51 @@
     </ion-toolbar>
   </ion-header>
   
-  
+  <!--
   <div id="container" style="margin-bottom: 200px;">
     <ion-button expand="block" (click)="whereIam()">Obtener Coords</ion-button>
     <p>Lat: {{lat}}, Lng: {{lng}}</p>
       {{location}}
   </div>
+  -->
+  <!--
+  <ion-button expand="block" (click)="hide()"> Diselo Xarli</ion-button>
+  <div *ngIf="hidden">
+    <h1>DALE LOL</h1>
+  </div>
+  -->
 
   <!-- <div style="margin-bottom: 500px;">
     <ion-button expand="block" (click)="postPhoto()">Subir Foto</ion-button>
   </div> -->
 
-  <div style="margin-bottom: 400px;">
-    <ion-button expand="block" (click)="uploadPhoto()">Subir Foto a Cloudinary</ion-button>
+  <div *ngIf="hidden"> 
+      <div style="height: 200px; width: 300px">
+      <img src="{{imgURL}}" height="200" width="200">
+      </div>
+     <div style="margin-bottom: 400px;">
+        <ion-button expand="block" (click)="uploadPhoto()">Subir Foto a Cloudinary</ion-button>
+      </div>
   </div>
 
+  <!--
   <div style="margin-bottom: 400px;">
     <ion-button expand="block" (click)="postPhoto()">Heroku</ion-button>
   </div>
-
-
-  <div style="margin-top: 70px">
-    <ion-button style="width: 280px; height: 40px; margin-left: 18px" (click)="showActionSheet()"> 
-      Participar Nuevo Reto
+  -->
+  
+  <div>
+    <h1>Reto</h1>
+    <ion-button (click)="showActionSheet()"> 
+      Hacer Foto
     </ion-button>
   </div>
   
-  <div style="height: 200px; width: 300px">
-    <img src="{{imgURL}}" height="200" width="200">
-  </div>
 
-
-  
   <div style="margin-left: 13px; margin-top: 40px">
     <h1> Retos Recientes</h1>
     {{urlInCloudinary}} 
-
+  </div>
 <ion-list>
 
   <ion-item style="margin-top: 2px">
@@ -156,5 +165,5 @@
 
 
 
-  </div>
+  
 </ion-content>
