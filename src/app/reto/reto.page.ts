@@ -42,7 +42,7 @@ export class Tab3Page {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.getPhotos(currentUser.username);
   }
-
+  /*
   ionViewDidEnter(){
     this.geo.getCurrentPosition().then((res) =>{
       this.map = new google.maps.Map(document.getElementById("map"),{
@@ -60,7 +60,8 @@ export class Tab3Page {
       console.log(e);
     })
 
-  }
+  }ç
+  */
 
   //getCurrentPositon llama al plugin de GPS del movil
   //watchPosition user movement?
@@ -107,6 +108,17 @@ export class Tab3Page {
   }
 
   async showActionSheet(){
+
+    this.geo.getCurrentPosition({
+      timeout: 10000,
+      enableHighAccuracy: true
+    }).then( (res) => {
+      this.lat = res.coords.latitude;
+      this.lng = res.coords.longitude;
+    }).catch((e)=>{
+      console.log(e);
+    });
+
     this.actionSheetCrtl.create({
       header: 'Seleccionar foto para el Reto',
       buttons: [
@@ -149,7 +161,7 @@ export class Tab3Page {
         data => {
           console.log(data);
           this.urlInCloudinary = data.url; 
-          // this.postPhoto();
+          this.postPhoto();
         },
         error => {console.log(error)}
       );
