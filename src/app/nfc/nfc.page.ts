@@ -94,15 +94,8 @@ export class Tab2Page {
         } else {
           alert('NFC_NOT_DETECTED');
         }
-
-
-      
     });
-
-
-    
- 
-}
+  }
 
   getlesson():void{
     let user = JSON.parse(localStorage.getItem('idUser'));
@@ -138,10 +131,12 @@ export class Tab2Page {
 
     this.StudentDojoBeltService.postStudentLesson(data).subscribe(
       data => {
+        alert("Asistencia registrada correctamente");
         alert(data[0].id);
-
       },
-      error => {console.log(error)}
+      error => {
+        alert("El usuario no debería estar en esta clase o su asistencia ya ha sido registrada");
+      }
     );
 
 
