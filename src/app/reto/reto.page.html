@@ -23,34 +23,59 @@
     <ion-button expand="block" (click)="postPhoto()">Subir Foto</ion-button>
   </div> -->
 
-  <div *ngIf="hidden"> 
-      <div style="height: 200px; width: 300px">
-      <img src="{{imgURL}}" height="200" width="200">
-      </div>
-     <div style="margin-bottom: 400px;">
-        <ion-button expand="block" (click)="uploadPhoto()">Subir Foto a Cloudinary</ion-button>
-      </div>
-  </div>
-
   <!--
   <div style="margin-bottom: 400px;">
     <ion-button expand="block" (click)="postPhoto()">Heroku</ion-button>
   </div>
   -->
+  <ion-card style="margin-top: 15%;">
+    <ion-card-header>
+      <ion-card-title><h2>Participar nuevo Reto</h2></ion-card-title>
+      <ion-card-subtitle>Comparte una foto en tu ubicación y gana puntos.</ion-card-subtitle>
+      
+    </ion-card-header>
   
+    <ion-card-content>
+      <ion-button style="margin-left: 20%;" (click)="showActionSheet()"> 
+        Hacer Foto
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+  <!--
   <div>
     <h1>Reto</h1>
     <ion-button (click)="showActionSheet()"> 
       Hacer Foto
     </ion-button>
   </div>
-  
+  -->
+  <div *ngIf="hidden"> 
+    <ion-card style="margin-top: 5%;">
+      <ion-card-header>
+        <ion-card-title><h2>Subir Foto</h2></ion-card-title>
+        <ion-card-subtitle>Una vez se suba la foto, deberá ser aprobada por el administrador para recibir los puntos.</ion-card-subtitle>
+        
+      </ion-card-header>
+    
+      <ion-card-content>
+        <div style="height: 200px; width: 300px">
+          <img src="{{imgURL}}" height="200" width="200">
+          </div>
+         <div style="margin-bottom: 2px;">
+            <ion-button expand="block" (click)="uploadPhoto()">Subir Foto</ion-button>
+          </div>
+      </ion-card-content>
+    </ion-card>
 
-  <div style="margin-left: 13px; margin-top: 40px">
+</div>
+
+  <div style="margin-left: 13px; margin-top: 2px">
     <h1> Retos Recientes</h1>
-    {{urlInCloudinary}} 
+    <!--{{urlInCloudinary}}-->
   </div>
-<ion-list>
+  
+  <ion-list>
 
   <ion-item style="margin-top: 2px">
     <ion-thumbnail slot="start">
@@ -63,12 +88,12 @@
           <ion-icon name="checkmark-circle-outline"></ion-icon>
         </ion-chip>
         <ion-chip color="primary">
-          <ion-label>Ciudad</ion-label>
+          <ion-label>Córdoba</ion-label>
           <ion-icon name="pin" color="primary"></ion-icon>
         </ion-chip>
       </ion-row>
-      <ion-row style="margin-top: 3px">
-        Información Extra
+      <ion-row style="margin-left: 18px">
+        C/ Gran Capitan, Nº 24
       </ion-row>
     </ion-label>
   </ion-item>
@@ -84,12 +109,12 @@
           <ion-icon name="checkmark-circle-outline"></ion-icon>
         </ion-chip>
         <ion-chip color="primary">
-          <ion-label>Ciudad</ion-label>
+          <ion-label>Málaga</ion-label>
           <ion-icon name="pin" color="primary"></ion-icon>
         </ion-chip>
       </ion-row>
-      <ion-row style="margin-top: 3px">
-        Información Extra
+      <ion-row style="margin-left: 18px">
+        C/ Larios Nº 122
       </ion-row>
     </ion-label>
   </ion-item>
@@ -105,12 +130,12 @@
           <ion-icon name="checkmark-circle-outline"></ion-icon>
         </ion-chip>
         <ion-chip color="primary">
-          <ion-label>Ciudad</ion-label>
+          <ion-label>Madrid</ion-label>
           <ion-icon name="pin" color="primary"></ion-icon>
         </ion-chip>
       </ion-row>
-      <ion-row style="margin-top: 3px">
-        Información Extra
+      <ion-row style="margin-left: 18px">
+        Plaza de Cibeles, Nº 66
       </ion-row>
     </ion-label>
   </ion-item>

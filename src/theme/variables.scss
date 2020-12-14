@@ -3,6 +3,25 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+  /** Paleta Dojo Usada **/
+  --ion-color-favorite: #1b1b1e;
+
+  .ion-color-favorite {
+    --ion-color-base: var(--ion-color-favorite);
+  }
+
+  --ion-color-brillo: #ff1654;
+  .ion-color-brillo {
+    --ion-color-base: var(--ion-color-brillo);
+  }
+
+  --ion-color-chipe: #ff5a5f;
+  .ion-color-chipe {
+    --ion-color-base: var(--ion-color-chipe);
+  }
+
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

@@ -12,7 +12,7 @@
     </ion-col>
     <ion-col size="7" style="top: 30px; right: 10px">
       <h5>{{student.completeName}}</h5>
-      <ion-chip>
+      <ion-chip color="success">
         <ion-icon name="flash" color="success"></ion-icon>
         <ion-label>{{student.points}} puntos</ion-label>
       </ion-chip>
@@ -21,7 +21,7 @@
 
 <ion-row>
   <ion-item class="cinturon_actual"> 
-    <ion-icon name="ribbon-outline" color="tertiary"></ion-icon>
+    <ion-icon name="ribbon-outline" color="brillo"></ion-icon>
     <ion-label style="margin-left: 25px; margin-right: 25px;">Cinturon Actual</ion-label>
     <!--Imagen Cinturon Alumno-->  
     <img src="https://i.imgur.com/OUjaEAU.png">
@@ -40,7 +40,7 @@
           {{student.belt.attendedClasses}} / 
           {{student.belt.requiredClasses}}
         </ion-card-subtitle>
-        <ion-progress-bar color="primary" class="pbar" value="{{student.belt.attendedClasses / student.belt.requiredClasses }}"></ion-progress-bar>
+        <ion-progress-bar color="chipe" class="pbar" value="{{student.belt.attendedClasses / student.belt.requiredClasses }}"></ion-progress-bar>
       </ion-card-content>
     </ion-card>
   </ion-row>
