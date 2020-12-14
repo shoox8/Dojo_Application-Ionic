@@ -110,7 +110,7 @@ export class Tab4Page implements OnInit{
 
     const contentString =
     '<div id="content">' +
-    "<strong> Usuario: --"+currentUser.username+"</strong>"+
+    "<strong> Usuario: --"+currentUser.username+"</strong>"+"</br>"
     "<strong> Localización: --"+markers.title+"</strong>"+"<a href="+markers.photoPath+">foto link</a>"+
 
 
@@ -119,7 +119,6 @@ export class Tab4Page implements OnInit{
     "</div>";
 
     const infowindow = new google.maps.InfoWindow({
-
     //const infowindow = new google.maps.htmlInfoWindow({
       //content: contentString,
       maxWidth: 400
@@ -130,7 +129,6 @@ export class Tab4Page implements OnInit{
 
 
     const markeerr= new google.maps.Marker({ 
-    // const marker =new google.maps.Marker({
       position: markers.position,
       map: this.map,
       icon: iconic,
