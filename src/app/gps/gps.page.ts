@@ -77,7 +77,7 @@ export class Tab4Page implements OnInit{
     // create a new map by passing HTMLElement
     const mapEle: HTMLElement = document.getElementById('map');
     // create LatLng object
-    const myLatLng = {lat: 37.9, lng: -4.7};
+    const myLatLng = {lat: 37.92, lng: -4.8};
     // create map
     this.map = new google.maps.Map(mapEle, {
       center: myLatLng,
@@ -110,11 +110,11 @@ export class Tab4Page implements OnInit{
 
     const contentString =
     '<div id="content">' +
-    "<strong> Usuario: --"+currentUser.username+"</strong>"+"</br>"
-    "<strong> Localización: --"+markers.title+"</strong>"+"<a href="+markers.photoPath+">foto link</a>"+
+    "<strong> Usuario: --</strong>"+currentUser.username+"<br><br>"+
+    "<strong> Localización: --</strong>"+markers.title+"<br><br>"+"<a href="+markers.photoPath+">foto link</a>"+
 
 
-    // '<img src='+markers.photoPath+'  width="40" height="50" alt="" />'+
+    '<br><img src='+markers.photoPath+'  width="40" height="50" alt="" />'+
     "</div>" +
     "</div>";
 
