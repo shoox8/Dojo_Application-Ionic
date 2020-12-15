@@ -7,8 +7,12 @@
 }
 
 .container h3{
-    color: black;
+    color: rgb(212, 76, 76);
 }
+
+ion-content {
+    --background: #EEEFF1;
+  }
 
 .container img{
     width: 150px;
