@@ -1,4 +1,4 @@
-<ion-content color="fondo">
+<ion-content>
 
   <!-- {{token}} -->
   <!-- {{username}} -->
@@ -20,8 +20,8 @@
   </ion-row>
 
 <ion-row>
-  <ion-item class="cinturon_actual"> 
-    <ion-icon name="ribbon-outline" color="brillo"></ion-icon>
+  <ion-item class="cinturon_actual" syle="box-shadow: inset 0 -3em -3em"> 
+    <ion-icon name="medal-sharp" color="tertiary"></ion-icon>
     <ion-label style="margin-left: 25px; margin-right: 25px;">Cinturon Actual</ion-label>
     <!--Imagen Cinturon Alumno-->  
     <img src="{{student.belt.photo}}">
@@ -29,18 +29,18 @@
 </ion-row>
 
   <!--Siguiente Cinturon-->
-  <ion-row style="padding-top: 10px; padding-left: 8px">
-    <ion-card style="width: 300px; border-radius: 10px">
+  <ion-row>
+    <ion-card style="width: 300px; border-radius: 10px;">
       <ion-item>
         <ion-label> Siguiente Cinturón</ion-label>
-        <ion-button fill="outline" slot="end">Ver</ion-button>
+        <ion-button fill="outline" slot="end" color="danger">Ver</ion-button>
       </ion-item>
       <ion-card-content class="ion-text-left">
         <ion-card-subtitle class="ion-text-right">
           {{student.belt.attendedClasses}} / 
           {{student.belt.requiredClasses}}
         </ion-card-subtitle>
-        <ion-progress-bar color="chipe" class="pbar" value="{{student.belt.attendedClasses / student.belt.requiredClasses }}"></ion-progress-bar>
+        <ion-progress-bar color="danger" class="pbar" value="{{student.belt.attendedClasses / student.belt.requiredClasses }}"></ion-progress-bar>
       </ion-card-content>
     </ion-card>
   </ion-row>

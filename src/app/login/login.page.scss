@@ -1,5 +1,5 @@
 ion-toolbar {
-    --background: #121212;
+    --background: #EEEFF1;
   
     ion-button {
       text-transform: initial;
@@ -13,7 +13,7 @@ ion-toolbar {
 }
 
   ion-content {
-    --background: #121212;
+    --background: #EEEFF1; 
   
     #header {
       display: flex;
@@ -23,7 +23,7 @@ ion-toolbar {
       h1 {
         font-weight: 700;
         font-size: 35px;
-        color: #e00f90;
+        color: #e00f2b;
         margin-bottom: 15%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
