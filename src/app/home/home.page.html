@@ -1,18 +1,18 @@
-<ion-content>
+<ion-content [fullscreen]="true">
 
   <!-- {{token}} -->
   <!-- {{username}} -->
 
   <!--Avatar nombre e info------------->
-  <ion-row size="1" size-md>
+  <ion-row>
     <ion-col style="top: 45px; left:40px">
-      <ion-avatar >
+      <ion-avatar style="height: 85%; width: 50%;">
         <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" >
       </ion-avatar>
     </ion-col>
-    <ion-col size="7" style="top: 30px; right: 10px">
-      <h5>{{student.completeName}}</h5>
-      <ion-chip color="success">
+    <ion-col size="7" style="top: 35px; right: 10px">
+      <h5 style="width: 90%;">{{student.completeName}}</h5>
+      <ion-chip color="success" style="margin-left: 15%">
         <ion-icon name="flash" color="success"></ion-icon>
         <ion-label>{{student.points}} puntos</ion-label>
       </ion-chip>
@@ -20,9 +20,9 @@
   </ion-row>
 
 <ion-row>
-  <ion-item class="cinturon_actual" syle="box-shadow: inset 0 -3em -3em"> 
+  <ion-item class="cinturon_actual" style="width: 90%; margin-left: 6%; margin-top: 15%;"> 
     <ion-icon name="medal-sharp" color="tertiary"></ion-icon>
-    <ion-label style="margin-left: 25px; margin-right: 25px;">Cinturon Actual</ion-label>
+    <ion-label style="margin-left: 20%;">Cinturon Actual</ion-label>
     <!--Imagen Cinturon Alumno-->  
     <img src="{{student.belt.photo}}">
   </ion-item>
@@ -30,10 +30,10 @@
 
   <!--Siguiente Cinturon-->
   <ion-row>
-    <ion-card style="width: 300px; border-radius: 10px;">
+    <ion-card style="width: 90%; border-radius: 10px; margin-left: 6%;">
       <ion-item>
         <ion-label> Siguiente Cinturón</ion-label>
-        <ion-button fill="outline" slot="end" color="danger">Ver</ion-button>
+        <ion-button fill="outline" slot="end" color="danger">{{student.belt.nextBelt}}</ion-button>
       </ion-item>
       <ion-card-content class="ion-text-left">
         <ion-card-subtitle class="ion-text-right">
@@ -47,7 +47,7 @@
 
   <!--Proximas Clases-->
   <ion-row >
-    <ion-col style="top: 5px; padding-left: 24px">
+    <ion-col style="top: 5px; padding-left: 7%; width: 95%;">
     <h3>Próximas Clases</h3>
     <div class="bar">
       <span class="bar__hour">09:30</span>
