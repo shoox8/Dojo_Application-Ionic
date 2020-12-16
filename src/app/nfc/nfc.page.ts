@@ -99,16 +99,19 @@ export class Tab2Page {
 
   getlesson():void{
     let user = JSON.parse(localStorage.getItem('idUser'));
-    alert(('user '+user.idUser+'--   service '+ this.service +'-- fecha: ' +this.fecha));
+    alert(('user '+user.idUser+' --   service '+ this.service +' -- fecha: ' + this.fecha));
     this.StudentDojoBeltService.getStudentLesson(user.idUser , this.service, this.fecha).subscribe(
       data => {
         this.lesson=data[0].id;
-        alert(('user '+user.idUser+' lesson '+ data[0].id));
+        // alert(('user '+user.idUser+' lesson '+ data[0].id));
         this.postlessonStudent()
 
        
       },
-      error => {console.log(error)}
+      error => {
+        console.log(error);
+        alert("No hay clases disponibles");
+      }
     );
     
    /* 
@@ -121,7 +124,7 @@ export class Tab2Page {
 
   postlessonStudent(){
     let user = JSON.parse(localStorage.getItem('idUser'));
-    alert("antes del post"+ this.lesson+"usuario: "+user.idUser )
+    // alert("antes del post"+ this.lesson+"usuario: "+user.idUser )
 
     let data = {
       "student":  user.idUser,
@@ -132,7 +135,7 @@ export class Tab2Page {
     this.StudentDojoBeltService.postStudentLesson(data).subscribe(
       data => {
         alert("Asistencia registrada correctamente");
-        alert(data[0].id);
+        // alert(data[0].id);
       },
       error => {
         alert("El usuario no debería estar en esta clase o su asistencia ya ha sido registrada");
